@@ -1,6 +1,7 @@
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
+import { e } from '@angular/core/src/render3';
 
 @Component({
   selector: 'page-home',
@@ -9,13 +10,15 @@ import { NavController, Platform } from 'ionic-angular';
 export class HomePage {
   matches: String[];
   isRecording = false;
-
+  hasPermission = false;
   constructor(public navCtrl: NavController, private platform: Platform,
     private speechRecognition: SpeechRecognition, private changeDetectorRef: ChangeDetectorRef) {
 
     this.speechRecognition.isRecognitionAvailable().then((available: boolean) => {
       console.warn(`isRecognitionAvailable : ${available}`);
     });
+
+    this.getPermissions();
   }
 
   isAndroid() {
@@ -27,6 +30,9 @@ export class HomePage {
       console.warn(`hasPermission : ${hasPermission}`);
       if (!hasPermission) {
         this.speechRecognition.requestPermission();
+      }
+      else {
+        this.hasPermission = hasPermission;
       }
     });
   }
