@@ -11,7 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx'
+import { SpeechRecognition } from '@ionic-native/speech-recognition'
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx'
     StatusBar,
     SplashScreen,
     SpeechRecognition,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

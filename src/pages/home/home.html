@@ -6,8 +6,8 @@
 
 <ion-content padding>
   <button ion-button full (click)="getPermissions()">Get Permission</button>
-  <button ion-button full (click)="startListening()">Start Listening</button>
-  <button ion-button full (click)="stopListening()" *ngIf="isAndroid()">Stop Listening</button>
+  <button ion-button full (click)="startListening()" *ngIf="!isRecording">Start Listening</button>
+  <button ion-button full (click)="stopListening()" *ngIf="isRecording">Stop Listening</button>
 
   <ion-card>
     <ion-card-header>This is what I understood...</ion-card-header>
